@@ -14,10 +14,6 @@ import {Button} from 'primereact/button';
 class ConsultaFornecedor extends React.Component{
 
     state = {
-        ano: '',
-        mes: '',
-        tipo: '',
-        descricao: '',
         showConfirmDialog: false,
         fornecedorDeletar: {},
         fornecedores : [],

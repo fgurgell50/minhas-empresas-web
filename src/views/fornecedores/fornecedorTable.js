@@ -25,25 +25,6 @@ export default props => {
                         ).join(', ')}
                 </td>
                 <td>
-                    {/*
-                   <button className="btn btn-success" title="Efetivar"
-                            disabled={ fornecedor.status !== 'PENDENTE' }
-                            onClick={e => props.alterarStatus(fornecedor, 'EFETIVADO')} 
-                            type="button">
-                            <i className="pi pi-check"></i>
-                    </button>
-                    <button className="btn btn-warning"  title="Cancelar"
-                            disabled={ fornecedor.status !== 'PENDENTE' }
-                            onClick={e => props.alterarStatus(fornecedor, 'CANCELADO')} 
-                            type="button">
-                            <i className="pi pi-times"></i>
-                    </button>
-                    <button type="button"   title="Editar"
-                            className="btn btn-primary"
-                            onClick={e => props.editAction(fornecedor.id)}>
-                            <i className="pi pi-pencil"></i>
-                    </button>
-                        */}
                     <button type="button"  title="Excluir"
                             className="btn btn-danger" 
                             onClick={ e => props.deleteAction(fornecedor)}>

@@ -63,17 +63,15 @@ class Home extends React.Component{
             <div className="jumbotron">
                 <h1 className="display-3">Bem vindo!</h1>
                 <p className="lead">Esse é seu sistema de Empresas.</p>
-               {/* <p className="lead">Seu saldo para o mês atual é de R$ {this.state.saldo}</p> 
-                <hr className="my-4" />*/}
                 <p className="lead">E essa é sua área administrativa, utilize um dos menus ou botões abaixo para navegar pelo sistema.</p>
                 <p className="lead">
                     <a className="btn btn-primary btn-lg" 
-                        href="#/cadastro-usuarios" 
+                        href="#/cadastro-empresas" 
                         role="button"><i className="fa fa-users"></i>  
                         Cadastrar Empresas
                     </a>
                     <a className="btn btn-danger btn-lg" 
-                        href="#/cadastro-lancamentos" 
+                        href="#/cadastro-fornecedor" 
                         role="button"><i className="fa fa-users"></i>  
                         Cadastrar Fornecedores
                     </a>
