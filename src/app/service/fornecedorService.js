@@ -26,13 +26,13 @@ export default class FornecedorService extends ApiService {
         ]
     }
 
-    obterListaTipos(){
+   /* obterListaTipos(){
         return [
             { label: 'Selecione...', value: ''},
             { label: 'Despesa', value: 'DESPESA'},
             { label: 'Receita', value: 'RECEITA'}
         ]
-    }
+    }*/
 
     obterPorId(id){
         return this.get(`/${id}`);

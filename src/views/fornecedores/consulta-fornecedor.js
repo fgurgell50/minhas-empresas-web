@@ -59,6 +59,7 @@ class ConsultaFornecedor extends React.Component{
 
     editar = (id) => {
         console.log('Editando o Lançamento',id)
+        this.props.history.push( `/cadastro-fornecedor/${id}`)
 
     }
 
@@ -87,8 +88,8 @@ class ConsultaFornecedor extends React.Component{
     }
 
     render(){
-        const meses = this.service.obterListaMeses()
-        const tipos = this.service.obterListaTipos()
+        //const meses = this.service.obterListaMeses()
+        //const tipos = this.service.obterListaTipos()
 
         const confirmDialogFooter = (
             <div>

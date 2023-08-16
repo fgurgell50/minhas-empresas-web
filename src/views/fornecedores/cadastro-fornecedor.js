@@ -26,7 +26,8 @@ class CadastroFornecedores extends React.Component{
         rg: '',
         data_nascimento: '',
         cep:'',
-        empresas: []
+        empresas: [],
+        atualizando: false
     }
 
     constructor(){
@@ -36,6 +37,23 @@ class CadastroFornecedores extends React.Component{
         this.cepService = new CepService();
         this.validaservice = new ValidaCnpjCpf();
         this.carregarListaEmpresas();
+    }
+
+    componentDidMount(){
+        //é executado depois do rebder
+        const params = this.props.match.params
+        console.log('params:',params)
+       
+        if(params.id){
+                this.service.obterPorId(params.id)
+                .then(response => { 
+                    console.log( 'retorno do obterPorId', response.data)
+                    this.setState( {...response.data, atualizando:true} ) 
+                 })
+            .catch(erros => {
+                messages.mensagemErro(erros.response.data)
+            })
+         }
     }
 
     carregarListaEmpresas() {
@@ -127,14 +145,27 @@ class CadastroFornecedores extends React.Component{
           fornecedor.empresas = selectedEmpresaId !== null ? [{ id: selectedEmpresaId }] : [];
       }
 
-
-      
         console.log('Objeto Envia Fornecedor', fornecedor)
         this.service
             .salvar(fornecedor)
             .then(response => {
                  messages.mensagemSucesso('Fornecedor cadastrado com sucesso!')
                  this.props.history.push('/consulta-fornecedor')
+            }).catch(error => {
+                messages.mensagemErro(error.response.data)
+            })
+    }
+
+    atualizar = () => {
+        const { cnpj_cpf, nome, email, rg, data_nascimento, cep, id, empresas } = this.state;
+
+        const fornecedor = { cnpj_cpf, nome, email, rg, data_nascimento, cep, id, empresas: [] };
+        console.log('Atualizar Fornecedor', fornecedor)
+        this.service
+            .atualizar(fornecedor)
+            .then(response => {
+                this.props.history.push('/consulta-fornecedor')
+                messages.mensagemSucesso('Fornecedor atualizado com sucesso!')
             }).catch(error => {
                 messages.mensagemErro(error.response.data)
             })
@@ -160,7 +191,7 @@ class CadastroFornecedores extends React.Component{
         console.log('Estamos no Render com a Lista', empresas)
 
         return(
-            <Card title="Cadastro de Fornecedores">
+            <Card title= { this.state.atualizando ? 'Atualização de Frnecedor' : 'Cadastro de Fornecedor'} >
                 <div className="row">
                     <div className="col-md-12">
                         <FormGroup id="inputCnpj_cpf" label="CNPJ/CPF: *" >
@@ -246,11 +277,20 @@ class CadastroFornecedores extends React.Component{
 
                 <div className="row">
                     <div className="col-md-6">
-                        <button onClick={this.submit} 
+                    { this.state.atualizando ? 
+                            (
+                                <button onClick={this.atualizar} 
+                                        className="btn btn-success">
+                                        <i className="pi pi-refresh"></i> Atualizar
+                                </button>
+                            ) : (
+                                <button onClick={this.submit} 
                                         className="btn btn-success">
                                         <i className="pi pi-save"></i> Salvar
-                        </button>
-                        <button onClick={e => this.props.history.push('/consulta-fornecedores')} 
+                                </button>
+                            )
+                        }
+                        <button onClick={e => this.props.history.push('/consulta-fornecedor')} 
                                 className="btn btn-danger">
                                 <i className="pi pi-times"></i>Cancelar
                         </button>

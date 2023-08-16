@@ -25,6 +25,13 @@ export default props => {
                         ).join(', ')}
                 </td>
                 <td>
+                   {/* 
+                   <button type="button"   title="Editar"
+                            className="btn btn-primary"
+                            onClick={e => props.editAction(fornecedor.fornecedor_id)}>
+                            <i className="pi pi-pencil"></i>
+                    </button> 
+                    */}
                     <button type="button"  title="Excluir"
                             className="btn btn-danger" 
                             onClick={ e => props.deleteAction(fornecedor)}>
