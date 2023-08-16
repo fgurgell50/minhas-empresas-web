@@ -74,8 +74,9 @@ export default class FornecedorService extends ApiService {
         return this.post('', lancamento);
     }
 
-    atualizar(lancamento){
-        return this.put(`/${lancamento.id}`, lancamento);
+    atualizar(fornecedor){
+        console.log('Atualização do Fornecedor', fornecedor);
+        return this.put(`/${fornecedor.id}`, fornecedor);
     }
 
     consultar(fornecedorFiltro){

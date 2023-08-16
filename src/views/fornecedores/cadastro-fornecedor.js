@@ -129,15 +129,7 @@ class CadastroFornecedores extends React.Component{
       const { cnpj_cpf, nome, email, rg, data_nascimento, cep, empresas, selectedEmpresaIndex } = this.state;
 
       let selectedEmpresaId;
-      let fornecedor = {
-          cnpj_cpf,
-          nome,
-          email,
-          rg,
-          data_nascimento,
-          cep,
-          empresas: []
-      };
+      let fornecedor = { cnpj_cpf, nome, email, rg, data_nascimento, cep, empresas: [] };
   
       if (selectedEmpresaIndex !== undefined && selectedEmpresaIndex !== -1) {
           console.log('Index Selecionado', selectedEmpresaIndex)

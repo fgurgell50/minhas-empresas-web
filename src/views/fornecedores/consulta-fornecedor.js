@@ -46,6 +46,10 @@ class ConsultaFornecedor extends React.Component{
         this.service
             .consultar(fornecedorFiltro)
             .then(resposta => {
+                const lista = resposta.data
+                if( lista.lenght < 1 ){
+                    messages.mensagemAlert("Nenhum resultado encontrato")
+                }
                 console.log('Retorno da Busca',resposta.data)
                 this.setState({fornecedores: resposta.data})
             }).catch(error =>{
